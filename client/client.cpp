@@ -13,7 +13,7 @@ namespace demo_api {
         Parcel data, reply;
         data.writeInterfaceToken(IDemoAPI::getInterfaceDescriptor());
         remote()->transact(GET_NAME, data, &reply);
-        reply.readInt32();
+        reply.readExceptionCode();
         return (char*)reply.readCString();
     }
 
@@ -23,8 +23,8 @@ namespace demo_api {
         data.writeInterfaceToken(IDemoAPI::getInterfaceDescriptor());
         data.writeString16(*part);
         remote()->transact(GET_NAME, data, &reply);
+        reply.readExceptionCode();
         String16* s = new String16(reply.readString16());
-        reply.readInt32();
         return s;
     }
 
@@ -35,7 +35,7 @@ namespace demo_api {
         data.writeInt32(a);
         data.writeInt32(b);
         remote()->transact(SUM, data, &reply);
-        reply.readInt32();
+        reply.readExceptionCode();
         return (int)reply.readInt32();
     }
 

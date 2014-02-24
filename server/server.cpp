@@ -21,7 +21,10 @@ namespace demo_api{
     {
         IPCThreadState* self = IPCThreadState::self();
         ALOGE("Calling MSG: PID=%d, UID=%d",self->getCallingPid(),self->getCallingUid());
+
+        //For Client Read exception code
         reply->writeInt32(0);
+
         switch(code)
         {
             case GET_NAME:
