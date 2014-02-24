@@ -5,6 +5,12 @@ namespace demo_api{
         return ("DemoAPI");
     };
 
+    String16* DemoAPI::getFullName(String16* part){
+        String16* s = new String16("DemoAPI ");
+        s->append(*part);
+        return s;
+    };
+
     int DemoAPI::sum(int a, int b){
         ALOGE("Binder Service: %d + %d",a,b);
         return a+b;
@@ -19,6 +25,13 @@ namespace demo_api{
                 {
                     CHECK_INTERFACE(IDemoAPI, data, reply);
                     reply->writeCString(getName());
+                    return NO_ERROR;
+                }break;
+            case GET_FULL_NAME:
+                {
+                    CHECK_INTERFACE(IDemoAPI, data, reply);
+                    String16* s = new String16(data.readString16());
+                    reply->writeString16(*getFullName(s));
                     return NO_ERROR;
                 }break;
             case SUM:

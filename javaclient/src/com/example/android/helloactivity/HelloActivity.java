@@ -54,6 +54,7 @@ public class HelloActivity extends Activity {
                 //}
                 Log.d(TAG, "1+2="+Integer.toString(mService.sum(1,2)));
                 Log.d(TAG, "Name="+mService.getName());
+                Log.d(TAG, "FullName="+mService.getFullName("AAABBBCCC"));
             }catch(Exception e){
                 Log.d(TAG,e.toString());
             }

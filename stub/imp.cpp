@@ -18,6 +18,17 @@ namespace demo_api {
         remote()->transact(GET_NAME, data, &reply);
         return (char*)reply.readCString();
     }
+
+    String16* BpDemoAPI::getFullName(String16* part)
+    {
+        Parcel data, reply;
+        data.writeInterfaceToken(IDemoAPI::getInterfaceDescriptor());
+        data.writeString16(*part);
+        remote()->transact(GET_NAME, data, &reply);
+        String16* s = new String16(reply.readString16());
+        return s;
+    }
+
     int BpDemoAPI::sum(int a, int b)
     {
         Parcel data, reply;

@@ -8,6 +8,7 @@
 #include <binder/IBinder.h>
 #include <binder/IInterface.h>
 #include <utils/Log.h>
+#include <utils/String16.h>
 using namespace android;
 
 #define SERVICE_NAME "android.binder.example"
@@ -17,7 +18,7 @@ using namespace android;
 namespace demo_api {
 
     enum DEMO_API_ENUM{
-        GET_NAME=IBinder::FIRST_CALL_TRANSACTION, SUM
+        GET_NAME=IBinder::FIRST_CALL_TRANSACTION, GET_FULL_NAME, SUM
     };
 
     class IDemoAPI : public IInterface
@@ -25,6 +26,7 @@ namespace demo_api {
         public:
             DECLARE_META_INTERFACE(DemoAPI);
             virtual char* getName() = 0;
+            virtual String16* getFullName(String16* l) = 0;
             virtual int sum(int a, int b) = 0;
     };
 
@@ -33,6 +35,7 @@ namespace demo_api {
         public:
             BpDemoAPI(const sp<IBinder>& impl );
             virtual char* getName();
+            virtual String16* getFullName(String16* l);
             virtual int sum(int a, int b);
     };
 

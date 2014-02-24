@@ -16,6 +16,7 @@ namespace demo_api{
     {
         public:
             virtual char* getName();
+            virtual String16* getFullName(String16* l);
             virtual int sum(int a, int b);
     };
 }
