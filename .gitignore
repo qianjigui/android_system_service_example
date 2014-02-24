@@ -1,1 +1,6 @@
+GPATH
+GRTAGS
+GSYMS
+GTAGS
 *.swp
+tags
