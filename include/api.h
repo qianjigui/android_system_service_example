@@ -10,12 +10,14 @@
 #include <utils/Log.h>
 using namespace android;
 
+#define SERVICE_NAME "android.binder.example"
+#define META_INTERFACE_NAME "android.binder.example.IDemoAPI"
+
+
 namespace demo_api {
 
-#define SERVICE_NAME "service.testmanager"
-
     enum DEMO_API_ENUM{
-        GET_NAME, SUM
+        GET_NAME=IBinder::FIRST_CALL_TRANSACTION, SUM
     };
 
     class IDemoAPI : public IInterface

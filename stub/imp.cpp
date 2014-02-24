@@ -28,7 +28,7 @@ namespace demo_api {
         return (int)reply.readInt32();
     }
 
-    IMPLEMENT_META_INTERFACE(DemoAPI,"android.TestServer.IDemoAPI");
+    IMPLEMENT_META_INTERFACE(DemoAPI,META_INTERFACE_NAME);
 
 }//end of namespace demo_api
 
