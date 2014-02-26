@@ -21,12 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="DemoAPIService" android:exported="true" android:label="android.binder.example">
-            <intent-filter>
-                <action android:name="com.example.demoapiservice.DemoAPIService"/>
-            </intent-filter>
-        </service>
-        <uses-permission android:name="android.permission.ADD_SYSTEM_SERVICE" ></uses-permission>
     </application>
 
 </manifest>
