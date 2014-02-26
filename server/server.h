@@ -4,6 +4,9 @@
 #include "api.h"
 
 namespace demo_api{
+    /*
+     * Service part
+     */
     class BnDemoAPI: public BnInterface<IDemoAPI>
     {
         public:

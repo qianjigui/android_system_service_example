@@ -17,8 +17,12 @@ namespace demo_api{
         return a+b;
     };
 
+    /*
+     * onTransact unpack data
+     */
     status_t BnDemoAPI::onTransact(uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
     {
+        //Here, to check the calling permissions
         IPCThreadState* self = IPCThreadState::self();
         ALOGE("Calling MSG: PID=%d, UID=%d",self->getCallingPid(),self->getCallingUid());
 

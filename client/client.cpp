@@ -2,17 +2,25 @@
 using namespace android;
 using namespace demo_api;
 
+/*
+ * ---------------------------------------------------------------------------
+ *
+ *  Client Proxy
+ */
 namespace demo_api {
 
     BpDemoAPI::BpDemoAPI(const sp<IBinder>& impl ):BpInterface<IDemoAPI>(impl)
     {
 
     }
+
     char* BpDemoAPI::getName()
     {
         Parcel data, reply;
         data.writeInterfaceToken(IDemoAPI::getInterfaceDescriptor());
+        //By operation code to transact
         remote()->transact(GET_NAME, data, &reply);
+        //Exception Code. In Java Level, aidl auto generate codes will process exceptioncode.
         reply.readExceptionCode();
         return (char*)reply.readCString();
     }
@@ -40,6 +48,9 @@ namespace demo_api {
     }
 
 }//end of namespace demo_api
+/*
+ * End of Client Proxy
+ */
 
 int main(int argc, char *argv[])
 {
@@ -49,6 +60,7 @@ int main(int argc, char *argv[])
     sp<IServiceManager> sm = defaultServiceManager();
 
     do{
+        //Search service by SERVICE_NAME
         binder = sm->getService(String16(SERVICE_NAME));
         if(binder != 0)
             break;
