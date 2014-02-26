@@ -10,6 +10,6 @@ LOCAL_SRC_FILES += $(call all-Iaidl-files-under, src)
 LOCAL_PACKAGE_NAME := HelloActivity
 
 LOCAL_SDK_VERSION := current
-LOCAL_CERTIFICATE := platform
+LOCAL_CERTIFICATE := testkey
 
 include $(BUILD_PACKAGE)
