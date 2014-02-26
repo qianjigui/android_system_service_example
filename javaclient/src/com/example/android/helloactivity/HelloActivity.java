@@ -48,10 +48,6 @@ public class HelloActivity extends Activity {
             setContentView(view);
 
             try{
-                //List<RunningServiceInfo> serviceInfos = am.getRunningServices(50);
-                //for (RunningServiceInfo service : serviceInfos) {
-                //        Log.i("Service", "Process " + service.process + " with component " + service.service.getClassName());
-                //}
                 Log.d(TAG, "1+2="+Integer.toString(mService.sum(1,2)));
                 Log.d(TAG, "Name="+mService.getName());
                 Log.d(TAG, "FullName="+mService.getFullName("AAABBBCCC"));
@@ -62,15 +58,18 @@ public class HelloActivity extends Activity {
 
     static final String SERVICE_NAME="android.binder.example";
 
+    /*
+     * Get binder service
+     */
     private void getDemoAPIService()
     {
         IBinder binder=null;
         Log.d(TAG,"getDemoAPIService");
         try{
+            //android.os.ServiceManager is hide class, we can not invoke them from SDK. So we have to use reflect to invoke these classes.
             Object object = new Object();
             Method getService = Class.forName("android.os.ServiceManager").getMethod("getService", String.class);
             Object obj = getService.invoke(object, new Object[]{new String(SERVICE_NAME)});
-            //binder = (IBinder)getSystemService("service.testmanager");
             binder = (IBinder)obj;
         }catch(Exception e){
             Log.d(TAG, e.toString());
