@@ -30,7 +30,7 @@ namespace demo_api {
         Parcel data, reply;
         data.writeInterfaceToken(IDemoAPI::getInterfaceDescriptor());
         data.writeString16(*part);
-        remote()->transact(GET_NAME, data, &reply);
+        remote()->transact(GET_FULL_NAME, data, &reply);
         reply.readExceptionCode();
         String16* s = new String16(reply.readString16());
         return s;
